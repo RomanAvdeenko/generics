@@ -78,6 +78,9 @@ func TestIsSorted(t *testing.T) {
 func TestSort(t *testing.T) {
 	t.Run("Quick sort", func(t *testing.T) {
 		t.Run("int", func(t *testing.T) {
+			//s := []int{3, 4, 1, 2, 5, 7, -1, 0}
+			//s := []int{4, 2, 0, -1, -3}
+
 			data := ints
 			s := data[:]
 			SortAsc(s)
@@ -90,34 +93,36 @@ func TestSort(t *testing.T) {
 			if !IsSortedDsc(s) {
 				t.Error("It should have been descending sorted")
 			}
-		})
-		t.Run("float64", func(t *testing.T) {
-			data := float64s
-			s := data[:]
-			SortAsc(s)
-			if !IsSortedAsc(s) {
-				t.Error("It should have been ascending sorted")
-			}
-			data = float64s
-			s = data[:]
-			SortDesc(s)
-			if !IsSortedDsc(s) {
-				t.Error("It should have been descending sorted")
-			}
-		})
-		t.Run("string", func(t *testing.T) {
-			data := strings
-			s := data[:]
-			SortAsc(s)
-			if !IsSortedAsc(s) {
-				t.Error("It should have been ascending sorted")
-			}
-			data = strings
-			s = data[:]
-			SortDesc(s)
-			if !IsSortedDsc(s) {
-				t.Error("It should have been descending sorted")
-			}
+			t.Run("float64", func(t *testing.T) {
+				//data := float64s
+				//s := data[:]
+				s := []float64{74.3, 59.0, math.Inf(1), 238.2, -784.0, 2.3, 0, 0, math.Inf(-1), 9845.768, -959.7485, 905, 7.8, 7.8}
+				SortAsc(s)
+				if !IsSortedAsc(s) {
+					t.Error("It should have been ascending sorted")
+				}
+				//data = float64s
+				//s = data[:]
+				s = []float64{74.3, 59.0, math.Inf(1), 238.2, -784.0, 2.3, 0, 0, math.Inf(-1), 9845.768, -959.7485, 905, 7.8, 7.8}
+				SortDesc(s)
+				if !IsSortedDsc(s) {
+					t.Error("It should have been descending sorted")
+				}
+			})
+			t.Run("string", func(t *testing.T) {
+				data := strings
+				s := data[:]
+				SortAsc(s)
+				if !IsSortedAsc(s) {
+					t.Error("It should have been ascending sorted")
+				}
+				data = strings
+				s = data[:]
+				SortDesc(s)
+				if !IsSortedDsc(s) {
+					t.Error("It should have been descending sorted")
+				}
+			})
 		})
 	})
 	t.Run("Bouble sort", func(t *testing.T) {
